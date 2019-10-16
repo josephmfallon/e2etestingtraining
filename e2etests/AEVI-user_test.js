@@ -171,13 +171,13 @@ Feature('AEVI Admin-User');
 //     pause();
 // });
 
-Scenario("Only Admin User's can access the Admin Page", (I) => {
-    I.amOnPage("https://developer.aevi-test.com/")
-    // I.fillField(locate({"name": "q"}), "You actually fucking did it, you madman")
-    // I.click(locate("input").withText("Google Search"));
-    I.click(locate('a').withText('Login'));
+// Scenario("Only Admin User's can access the Admin Page", (I) => {
+//     I.amOnPage("https://developer.aevi-test.com/")
+//     // I.fillField(locate({"name": "q"}), "You actually fucking did it, you madman")
+//     // I.click(locate("input").withText("Google Search"));
+//     I.click(locate('a').withText('Login'));
     
-});
+// });
 
 
 
