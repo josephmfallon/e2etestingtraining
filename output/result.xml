@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="2.696" tests="1" failures="1">
+  <testsuite name="Root Suite" timestamp="2019-10-07T17:00:23" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Test screenshot comparision functionality" timestamp="2019-10-07T17:00:23" tests="1" file="C:\Users\joseph.fallon.ext\Desktop\Aevi\git\e2etests\new_test.js" failures="1" time="2.696">
+    <testcase name="Test screenshot comparision functionality: fail test" time="2.696" classname="fail test">
+      <failure message="MissMatch Percentage 2.72" type="AssertionError [ERR_ASSERTION]"><![CDATA[MissMatch Percentage 2.72
+
+Scenario Steps:
+
+- I.seeVisualDiff("test01.PNG", {"tolerance":2,"prepareBaseImage":false}) at Test.Scenario (e2etests\new_test.js:21:5)
+- I.saveScreenshot("test01.png") at Test.Scenario (e2etests\new_test.js:20:5)
+- I.click("Dashboard") at Test.Scenario (e2etests\new_test.js:19:5)
+- I.amOnPage("https://developer.aevi-test.com/admin/applications") at Test.Scenario (e2etests\new_test.js:18:5)
+
+]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
