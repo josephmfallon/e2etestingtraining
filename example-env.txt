@@ -1,0 +1,9 @@
+aevi_user=email
+aevi_password=pswd
+regular_user=email
+regular_user_password=pswd
+test_user=email
+test_user_password=pswd
+aevi_admin_site=URL
+developer_user_site=URL
+

@@ -43,7 +43,10 @@ exports.config = {
              }
            }
          }
-       }
+       },
+    allure: {
+      enabled: true
+      }
   },
   include: {
     I: './steps_file.js'
