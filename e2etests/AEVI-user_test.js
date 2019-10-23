@@ -191,6 +191,9 @@ Scenario("AEVI User details can be edited", (I) => {
     
 });
 
+
+// To solve: https://stackoverflow.com/questions/38884522/why-is-my-asynchronous-function-returning-promise-pending-instead-of-a-val
+
 //identiying how to get "dynamic ID for users". 1. how to define variables in codeceptjs. 2. concatenate variable in JS. 3. find xpath of userid of instance 4. document which row of xpath can be customisable to point to different data rows
 //full xpath to row:var row_id= locate('/html/body/div/div/section/div/main/section/section[1]/div/section/table/tbody/tr[1]/td[4]').find("a").find("href")
 //
