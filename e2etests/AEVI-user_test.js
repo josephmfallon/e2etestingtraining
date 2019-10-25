@@ -86,7 +86,7 @@ Feature('AEVI Admin User Management').tag("@aevi_user");
 //         //If other tab present in outlook use the following two commands
 //         //I.say("Click the other tab")
 //         //I.click("#Pivot33-Tab1");
-//         I.wait(30);
+//         I.wait(60);
 //         I.see("Invitation instructions");
 //         I.say("Move invitation to 'completed' folder so it doesn't impact future tests");
 //         I.click({xpath: '/html/body/div[2]/div/div[2]/div/div[1]/div[3]/div[2]/div/div[1]/div[1]/div/div[1]'});
@@ -117,13 +117,13 @@ Feature('AEVI Admin User Management').tag("@aevi_user");
 //         //If other tab present in outlook use the following two commands
 //         //I.say("Click the other tab")
 //         //I.click("#Pivot33-Tab1");
-//         I.wait(30);
+//         I.wait(60);
 //         I.see("Invitation instructions");
 //         I.say("Move invitation to 'completed' folder so it doesn't impact future tests");
 //         I.click({xpath: '/html/body/div[2]/div/div[2]/div/div[1]/div[3]/div[2]/div/div[1]/div[1]/div/div[1]'});
 //         I.click({"name":"Move to"});
-//         I.wait(2);
-//         I.say("I select the Completed_tests folder")
+//         I.say("I select the Completed_tests folder");
+//         I.waitForElement({xpath: '/html/body/div[7]/div/div/div/div/div/div/ul/li/div/div[4]/div'}, 10);
 //         I.click({xpath: '/html/body/div[7]/div/div/div/div/div/div/ul/li/div/div[4]/div'});
 //         I.dontSee("Invitation instructions");
         
@@ -159,9 +159,10 @@ Scenario("AEVI User details can be edited", (I) => {
     I.click({xpath: "/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[1]/a"});
     I.amOnPage("https://developer.aevi-test.com/admin/aevi/users");
 
-    row_id= Promise.resolve(I.grabAttributeFrom(locate('tr').withAttr({'data-email': "automated-test-email@test.com"}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href'));
+    let row_id= Promise.resolve(I.grabAttributeFrom(locate('tr').withAttr({'data-email': "automated-test-email@test.com"}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href'));
+    console.log(row_id);
     
-    {
+    
     let row = row_id.then(function(value) {
         console.log('inside the declaration', value);
         return value;
@@ -169,16 +170,26 @@ Scenario("AEVI User details can be edited", (I) => {
       });
       console.log('outside the declaration', row);
 
-    }
-
+    
+    pause();
     // I.say(row_id.then(function(value) { console.log(value) }));
-    // sliced_row_id = row_id.toString().slice(54);
-    // first_name = "#first_name_" + sliced_row_id
-    // last_name = "#last_name_" + sliced_row_id
-    // email = "#email_" + sliced_row_id
+    let sliced_row = row_id.then(function(value) {
+      console.log('inside the declaration', value);
+      console.log('inside the declaration', value.toString().slice(54));
+      test = value.toString().slice(54);
+      console.log('testy', test)
+      I.say("lets see if thise works");
+      return test
+    });
+    // let sliced_row_id = row.toString().slice(54);
+    console.log(slice_row);
 
-    I.say("I click edit on the 6th row")
-    I.click({xpath: '/html/body/div/div/section/div/main/section/section[1]/div/section/table/tbody/tr[11]/td[4]/a'});
+    //let first_name = "#first_name_" + sliced_row_id
+    //let last_name = "#last_name_" + sliced_row_id
+    //let email = "#email_" + sliced_row_id
+
+    // I.say("I click edit on the 6th row")
+    // I.click({xpath: '/html/body/div/div/section/div/main/section/section[1]/div/section/table/tbody/tr[11]/td[4]/a'});
     //ID syntax is #id_name_user-defined-id the user id will be specific to the row instance
     // I.say("I edit first name")
     // I.fillField("#first_name_be65b877-9b01-4e96-a747-a190ae5bef52", "automated-test-user");
@@ -186,8 +197,8 @@ Scenario("AEVI User details can be edited", (I) => {
     // I.fillField("#last_name_be65b877-9b01-4e96-a747-a190ae5bef52", "automated-test-last-name");
     // I.fillField("#email_be65b877-9b01-4e96-a747-a190ae5bef52", "automated-test-email@test.com");
     // I.say("Give user all permisions")
-    pause();
-    I.click({xpath: '/html/body/div/div/section/div/main/section/section[1]/div/section/table/tbody/tr[12]/td/form/div[6]/input'});
+    
+    // I.click({xpath: '/html/body/div/div/section/div/main/section/section[1]/div/section/table/tbody/tr[12]/td/form/div[6]/input'});
     
 });
 

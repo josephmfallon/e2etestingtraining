@@ -1,15 +1,11 @@
 
-//const user = process.env.aevi_user
-//const password = process.env.aevi_password
-//const web_page = process.env.web_page
-
 
 exports.config = {
   tests: './e2etests/*_test.js',
   output: './output',
   helpers: {
     WebDriver: {
-      SmartWait: 1000,
+      SmartWait: 10000,
       url: 'http://localhost',
       browser: 'chrome',
       windowSize: '1920x1080'
@@ -46,7 +42,13 @@ exports.config = {
        },
     allure: {
       enabled: true
-      }
+      },
+    retryFailedStep: {
+      enabled: true
+     },
+     autoDelay: {
+      enabled: true
+    } 
   },
   include: {
     I: './steps_file.js'
