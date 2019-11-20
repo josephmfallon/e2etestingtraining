@@ -1,12 +1,12 @@
 // Feature('AEVI Admin User Management').tag("@aevi_user");
 
-// Scenario("Template", (I) => {
+// // Scenario("Template", (I) => {
 
 
-// }).tag("@name");
+// // }).tag("@name");
 
 
-// Scenario("Validate Admin User login" , (I) => {
+// Scenario("Validate Admin User login" , async (I) => {
 //     I.amOnPage(process.env.aevi_admin_site);
 //     I.fillField('Email', process.env.aevi_user);
 //     I.fillField('Password', secret(process.env.aevi_password));
@@ -55,10 +55,11 @@
 //         login('admin'); // login using user session
 //     });
     
-//     Scenario("New AEVI User invites can be sent", (I) => {
+//     Scenario("New AEVI User invites can be sent", async (I) => {
         
 //         I.say("The AEVI Admin User screen is accesible");
-//         I.click({xpath: "/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[1]/a"});
+//         user_button = await locate('a').withAttr({'href': "/admin/aevi/users"}).inside(locate('nav'));
+//         I.click(user_button);
 //         I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users");
 
 //         I.say("The Invite New user screen is accecible");
@@ -94,19 +95,20 @@
 //         I.dontSee("Invitation instructions")
 //     }).tag("@https://jira.aevi.com/browse/AEVICOM-1580");
 
-    // Scenario("Pending AEVI User Invitations can be resent", async (I) => {
-    //     I.amOnPage("https://developer.aevi-test.com/admin/aevi/users");
-    //     I.say("Validate a pending user tab is interactable");
-    //     I.see("Pending");
-    //     I.click("Pending");
-    //     I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users#pending_invites");
+//     Scenario("Pending AEVI User Invitations can be resent", async (I) => {
+//         user_button = await locate('a').withAttr({'href': "/admin/aevi/users"}).inside(locate('nav'));
+//         I.amOnPage("https://developer.aevi-test.com/admin/aevi/users");
+//         I.say("Validate a pending user tab is interactable");
+//         I.see("Pending");
+//         I.click("Pending");
+//         I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users#pending_invites");
 
-    //     //Define row specific variables, to choose a specific row to be delete edit the "data-email" field in row_id & edit_button
-    //     row_id= await I.grabAttributeFrom(locate('tr').withAttr({'data-email': process.env.test_user}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href');  
-    //     sliced_row_id = row_id.toString().slice(49);
-    //     resend_button = await locate('a').withAttr({class: "js-tab o-icon c-darkLink"}).inside(locate('tr').withAttr({'data-email': process.env.test_user}));
-    //     I.click(resend_button);
-    //     I.see("Invite resent");
+//         //Define row specific variables, to choose a specific row to be delete edit the "data-email" field in row_id & edit_button
+//         row_id= await I.grabAttributeFrom(locate('tr').withAttr({'data-email': process.env.test_user}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href');  
+//         sliced_row_id = row_id.toString().slice(49);
+//         resend_button = await locate('a').withAttr({class: "o-icon c-darkLink"}).inside(locate('tr').withAttr({'data-email': process.env.test_user}));
+//         I.click(resend_button);
+//         I.see("Invite resent");
 
 //         I.say("The recipient can see the resent invitation has arrived");
 //         I.amOnPage("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1570801229&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26RpsCsrfState%3dec427dd5-d3c5-c5e8-29d8-ad09dc16bb11&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=90015");
@@ -130,34 +132,36 @@
 //         I.click({xpath: '/html/body/div[7]/div/div/div/div/div/div/ul/li/div/div[4]/div'});
 //         I.dontSee("Invitation instructions");
         
-    // }).tag("@https://jira.aevi.com/browse/AEVICOM-1586");
+//     }).tag("@https://jira.aevi.com/browse/AEVICOM-1586");
 
-    // Scenario("Pending AEVI User Invites can be deleted", async (I) => {
-    //     I.say("The AEVI Admin User screen is accesible");
-    //     I.click({xpath: "/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[1]/a"});
-    //     I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users");
-    //     I.say("Validate a pending user tab is interactable");
-    //     I.see("Pending");
-    //     I.click("Pending");
-    //     I.say("I can view the newly invited user within the pending invitee list");
-    //     I.see(process.env.test_user);
+//     Scenario("Pending AEVI User Invites can be deleted", async (I) => {
+//         user_button = await locate('a').withAttr({'href': "/admin/aevi/users"}).inside(locate('nav'));
+//         I.say("The AEVI Admin User screen is accesible");
+//         I.click(user_button);
+//         I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users");
+//         I.say("Validate a pending user tab is interactable");
+//         I.see("Pending");
+//         I.click("Pending");
+//         I.say("I can view the newly invited user within the pending invitee list");
+//         I.see(process.env.test_user);
 
-    //     //Define row specific variables, to choose a specific row to be delete edit the "data-email" field in row_id & edit_button
-    //     row_id= await I.grabAttributeFrom(locate('tr').withAttr({'data-email': process.env.test_user}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href');  
-    //     sliced_row_id = row_id.toString().slice(49);
-    //     console.log(sliced_row_id);
-    //     delete_button = await locate('a').withAttr({'href': "/admin/aevi/users/" + sliced_row_id}).inside(locate('tr').withAttr({'data-email': process.env.test_user}));
-    //     I.click(delete_button);
-    //     I.seeInPopup("Are you sure?");
-    //     I.acceptPopup();
+//         //Define row specific variables, to choose a specific row to be delete edit the "data-email" field in row_id & edit_button
+//         row_id= await I.grabAttributeFrom(locate('tr').withAttr({'data-email': process.env.test_user}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href');  
+//         sliced_row_id = row_id.toString().slice(49);
+//         console.log(sliced_row_id);
+//         delete_button = await locate('a').withAttr({'href': "/admin/aevi/users/" + sliced_row_id}).inside(locate('tr').withAttr({'data-email': process.env.test_user}));
+//         I.click(delete_button);
+//         I.seeInPopup("Are you sure?");
+//         I.acceptPopup();
         
-    // }).tag("@https://jira.aevi.com/browse/AEVICOM-1587");
+//     }).tag("@https://jira.aevi.com/browse/AEVICOM-1587");
 
 // Scenario("New AEVI User can accept their invitation", async (I) => {
 
 //         // Send a brand new invitation
 //         I.say("The AEVI Admin User screen is accesible");
-//         I.click({xpath: "/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[1]/a"});
+//         user_button = await locate('a').withAttr({'href': "/admin/aevi/users"}).inside(locate('nav'));
+//         I.click(user_button);
 //         I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users");
 
 //         I.say("The Invite New user screen is accecible");
@@ -204,71 +208,73 @@
 // Scenario("AEVI User Details can be edited", async (I) => {
     
 
-    //     I.say("The AEVI Admin User screen is accesible");
-    //     I.click({xpath: "/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[1]/a"});
-    //     I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users");
+//         I.say("The AEVI Admin User screen is accesible");
+//         user_button = await locate('a').withAttr({'href': "/admin/aevi/users"}).inside(locate('nav'));
+//         I.click(user_button);
+//         I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users");
     
-    //     //Define row specific variables, to choose a specific row to be delete edit the "data-email" field in row_id & edit_button
-    //     row_id= await I.grabAttributeFrom(locate('tr').withAttr({'data-email': process.env.test_user}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href');   
-    //     sliced_row_id = row_id.toString().slice(54);
-    //     first_name = "#first_name_" + sliced_row_id
-    //     last_name = "#last_name_" + sliced_row_id
-    //     email = "#email_" + sliced_row_id
-    //     super_admin = "#super_admin_" + sliced_row_id
-    //     user = '#user_' + sliced_row_id
-    //     uservan = 'user_' + sliced_row_id
-    //     edit_button = await locate('a').withAttr({'href': user}).inside(locate('tr').withAttr({'data-email': process.env.test_user}));
-    //     cancel_button = await locate('a').withAttr({'href': user}).inside(locate('tr').withAttr({id: uservan}));
-    //     //delete button inside the edit tab
-    //     delete_button = await locate('a').withAttr({'href': "/admin/aevi/users/" +uservan}).inside(locate('tr').withAttr({id: uservan}));
-    //     update_button = await locate('input').withAttr({'value':'Update Admin user'}).inside(locate('tr').withAttr({id: uservan}));
+//         //Define row specific variables, to choose a specific row to be delete edit the "data-email" field in row_id & edit_button
+//         row_id= await I.grabAttributeFrom(locate('tr').withAttr({'data-email': process.env.test_user}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href');   
+//         sliced_row_id = row_id.toString().slice(54);
+//         first_name = "#first_name_" + sliced_row_id
+//         last_name = "#last_name_" + sliced_row_id
+//         email = "#email_" + sliced_row_id
+//         super_admin = "#super_admin_" + sliced_row_id
+//         user = '#user_' + sliced_row_id
+//         uservan = 'user_' + sliced_row_id
+//         edit_button = await locate('a').withAttr({'href': user}).inside(locate('tr').withAttr({'data-email': process.env.test_user}));
+//         cancel_button = await locate('a').withAttr({'href': user}).inside(locate('tr').withAttr({id: uservan}));
+//         //delete button inside the edit tab
+//         delete_button = await locate('a').withAttr({'href': "/admin/aevi/users/" +uservan}).inside(locate('tr').withAttr({id: uservan}));
+//         update_button = await locate('input').withAttr({'value':'Update Admin user'}).inside(locate('tr').withAttr({id: uservan}));
         
-    //     I.say("I can cancel an edit of a user");
-    //     I.click(edit_button);
-    //     I.say("I edit first name")
-    //     I.fillField(first_name, "edited_automated-test-user");
-    //     I.say("I edit last name")
-    //     I.fillField(last_name, "edited_automated-test-last-name");
-    //     I.fillField(email, "edited_automated-test-email@test.com");
-    //     I.say("Give user super admin permisions")
-    //     I.checkOption(super_admin);
-    //     I.seeCheckboxIsChecked(super_admin);
-    //     I.click(cancel_button)
-    //     I.dontSee("edited_automated-test-user");
+//         I.say("I can cancel an edit of a user");
+//         I.click(edit_button);
+//         I.say("I edit first name")
+//         I.fillField(first_name, "edited_automated-test-user");
+//         I.say("I edit last name")
+//         I.fillField(last_name, "edited_automated-test-last-name");
+//         I.fillField(email, "edited_automated-test-email@test.com");
+//         I.say("Give user super admin permisions")
+//         I.checkOption(super_admin);
+//         I.seeCheckboxIsChecked(super_admin);
+//         I.click(cancel_button)
+//         I.dontSee("edited_automated-test-user");
     
-    //     I.say("I can edit a user");
-    //     I.click(edit_button);
-    //     I.say("I edit first name")
-    //     I.fillField(first_name, "edited_automated-test-user");
-    //     I.say("I edit last name")
-    //     I.fillField(last_name, "edited_automated-test-last-name");
-    //     I.fillField(email, "edited_automated-test-email@test.com");
-    //     I.say("Give user super admin permisions")
-    //     I.checkOption(super_admin);
-    //     I.seeCheckboxIsChecked(super_admin);
-    //     I.click(update_button);
-    //     I.see("edited_automated-test-user");
+//         I.say("I can edit a user");
+//         I.click(edit_button);
+//         I.say("I edit first name")
+//         I.fillField(first_name, "edited_automated-test-user");
+//         I.say("I edit last name")
+//         I.fillField(last_name, "edited_automated-test-last-name");
+//         I.fillField(email, "edited_automated-test-email@test.com");
+//         I.say("Give user super admin permisions")
+//         I.checkOption(super_admin);
+//         I.seeCheckboxIsChecked(super_admin);
+//         I.click(update_button);
+//         I.see("edited_automated-test-user");
         
-    // }).tag("@https://jira.aevi.com/browse/AEVICOM-1583");
+//     }).tag("@https://jira.aevi.com/browse/AEVICOM-1583");
     
     
-    // Scenario("AEVI Users can be deleted", async (I) => {
+//     Scenario("AEVI Users can be deleted", async (I) => {
     
     
-    //     I.say("The AEVI Admin User screen is accesible");
-    //     I.click({xpath: "/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[1]/a"});
-    //     I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users");
+//         I.say("The AEVI Admin User screen is accesible");
+//         user_button = await locate('a').withAttr({'href': "/admin/aevi/users"}).inside(locate('nav'));
+//         I.click(user_button);
+//         I.seeCurrentUrlEquals("https://developer.aevi-test.com/admin/aevi/users");
         
-    //      //Define row specific variables, to choose a specific row to be delete edit the "data-email" field in row_id & delete_button
-    //     row_id= await I.grabAttributeFrom(locate('tr').withAttr({'data-email': "edited_automated-test-email@test.com"}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href');   
-    //     sliced_row_id = row_id.toString().slice(54);
-    //     delete_button = await locate('a').withAttr({'href': "/admin/aevi/users/" +sliced_row_id}).inside(locate('tr').withAttr({'data-email': "edited_automated-test-email@test.com"}));
-    //     I.click(delete_button);
-    //     I.seeInPopup("Are you sure?");
-    //     I.acceptPopup();
-    //     I.dontSee("edited_automated-test-email@test.com");
+//          //Define row specific variables, to choose a specific row to be delete edit the "data-email" field in row_id & delete_button
+//         row_id= await I.grabAttributeFrom(locate('tr').withAttr({'data-email': "edited_automated-test-email@test.com"}).find("td").withAttr({'data-title': "Actions"}).find("a"), 'href');   
+//         sliced_row_id = row_id.toString().slice(54);
+//         delete_button = await locate('a').withAttr({'href': "/admin/aevi/users/" +sliced_row_id}).inside(locate('tr').withAttr({'data-email': "edited_automated-test-email@test.com"}));
+//         I.click(delete_button);
+//         I.seeInPopup("Are you sure?");
+//         I.acceptPopup();
+//         I.dontSee("edited_automated-test-email@test.com");
         
-    // }).tag("@https://jira.aevi.com/browse/AEVICOM-1584");
+//     }).tag("@https://jira.aevi.com/browse/AEVICOM-1584");
 
 
 

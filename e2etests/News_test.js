@@ -5,10 +5,11 @@
 //             login('admin'); // login using user session
 //         });
 
-// Scenario("I can create a new News Article", (I) => {
+// Scenario("I can create a new News Article", async (I) => {
 //     I.say('I can cancel a new News article part way through creation')
 //     //Click on the news tab button
-//     I.click({xpath: '/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[2]/a'});
+//     news_button = await locate('a').withAttr({'href': "/admin/news"}).inside(locate('nav'));
+//     I.click(news_button);
 //     I.seeInCurrentUrl('https://developer.aevi-test.com/admin/news');
 //     I.click('Create News');
 //     I.fillField('#news_title', 'automated_news_article');
@@ -28,12 +29,13 @@
 //     I.see('automated_news_article');
 // }).tag("@https://jira.aevi.com/browse/AEVICOM-1590");
 
-// Scenario("The latest News Articles are displayed at the bottom of the Documentation page", (I) => {
+// Scenario("The latest News Articles are displayed at the bottom of the Documentation page", async (I) => {
 //     I.say('The two articles we will be checking in the developer site are available within the news tab');
 //     //Click on the news tab button
-//     I.click({xpath: '/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[2]/a'});
+//     news_button = await locate('a').withAttr({'href': "/admin/news"}).inside(locate('nav'));
+//     I.click(news_button);
 //     I.seeInCurrentUrl('https://developer.aevi-test.com/admin/news');
-//     I.see('News v 1');
+//     I.see('Automation_dont_delete');
 //     I.see('automated_news_article');
 //     I.say('I sign out as an admin user');
 //     //click on drop down bar
@@ -60,10 +62,9 @@
 // Scenario("I can Edit News", async (I) => {
 //     I.say('I can cancel a new News article part way through editing it')
 //     //Click on the news tab button
-//     I.click({xpath: '/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[2]/a'});
+//     news_button = await locate('a').withAttr({'href': "/admin/news"}).inside(locate('nav'));
+//     I.click(news_button);
 //     I.seeInCurrentUrl('https://developer.aevi-test.com/admin/news');
-//     pause()
-
 //     //Create parameters for the category row to be changed, change "automated_news_article" to the category you wish to change
 //     edit_button = await locate('a').withAttr({'class': "o-icon  c-darkLink"}).inside(locate('tr').withAttr({'data-name': 'automated_news_article'}));
 //     delete_button = await locate('a').withAttr({'data-confirm': 'Are you sure?'}).inside(locate('tr').withAttr({'data-name': 'automated_news_article'}));
@@ -92,7 +93,8 @@
 
 // Scenario("News Articles can be deleted", async (I) => {
 //     //Click on the news tab button
-//     I.click({xpath: '/html/body/div/div/section[2]/div/aside/nav/div[2]/nav/ul/li[7]/ul/li[2]/a'});
+//     news_button = await locate('a').withAttr({'href': "/admin/news"}).inside(locate('nav'));
+//     I.click(news_button);
 //     I.seeInCurrentUrl('https://developer.aevi-test.com/admin/news');
 
 //     //Create parameters for the category row to be changed, change "edited_automated_news_article" to the category you wish to change
