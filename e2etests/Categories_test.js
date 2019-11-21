@@ -11,7 +11,7 @@
 // }).tag("@name");
 
 
-// Scenario("I can create a new Category", (I) => {
+// Scenario("I can create a new Category", async (I) => {
 
 //     I.say("Test that a user can cancel a category creation");
 //     // Unable to use scroll down function and ellements aren't discoverable if they are too far down a page, so switch to a page with less scrolling

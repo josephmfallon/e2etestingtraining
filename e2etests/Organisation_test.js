@@ -1,9 +1,9 @@
-// Feature("Organisations").tag("@Organisations");
+Feature("Organisations").tag("@Organisations");
 
 
-// Before(login => {
-//             login('admin'); // login using user session
-//         });
+Before(login => {
+            login('admin'); // login using user session
+        });
 
 // Scenario("Organisations can be created as an AEVI Admin", (I) => {
     
@@ -43,6 +43,7 @@
 //     edit_button= await locate('tr').withAttr({'data-name': "auto_test_Organisation"}).find("td").at(4).find("a");  
 //     I.say('I can edit organisation overview')
 //     I.click(edit_button);
+//     I.click("Overview");
 //     I.fillField("#organisation_name", "auto_test_Organisation_edited");
 //     I.fillField("#organisation_description", "This is the description for the automated test Organisation *_+12312adfsdfad DFnc/z.x234 edited");
 //     I.fillField("#organisation_website", "https://www.auto-test.com/edited");
@@ -53,7 +54,6 @@
 //     I.checkOption("#organisation_documentation_group_organisations_attributes_5_documentation_group_id");
 //     I.say("I can click 'Update Organisation'")
 //     I.click({"name": "button"});
-//     pause()
 //     I.see("Organisation was successfully updated.");
 //     I.see("auto_test_Organisation_edited"); 
     
@@ -97,65 +97,65 @@
 //     I.say('I can access the Organisations screen');
 //     I.click('Organisations');
 //     I.seeInCurrentUrl('https://developer.aevi-test.com/admin/organisations');
-//     edit_button = await locate('a').withAttr({'class': "o-icon  c-darkLink"}).inside(locate('tr').withAttr({'data-name': 'auto_test_organisation_edited'}));
-//     delete_button = await locate('a').withAttr({'data-confirm': 'Are you sure?'}).inside(locate('tr').withAttr({'data-name': 'auto_test_organisation_edited'}));
-//     I.say("I click delete on the Industry");
+//     edit_button = await locate('a').withAttr({'class': "o-icon  c-darkLink"}).inside(locate('tr').withAttr({'data-name': 'auto_test_Organisation_edited'}));
+//     delete_button = await locate('a').withAttr({'data-confirm': 'Are you sure?'}).inside(locate('tr').withAttr({'data-name': 'auto_test_Organisation_edited'}));
+//     I.say("I click delete on the Organisation");
 //     I.click(delete_button);
 //     I.acceptPopup();
 //     I.dontSee("auto_test_organisation_edited");
 
 // }).tag("@https://jira.aevi.com/browse/AEVICOM-1683");
 
-// Scenario("I can assign an Organisation Document access as an AEVI User", async (I) => {
-//     I.say('I can access the Organisations screen');
-//     I.click('Organisations');
-//     I.seeInCurrentUrl('https://developer.aevi-test.com/admin/organisations');
-//     href= await I.grabAttributeFrom(locate('tr').withAttr({'data-name': "AEVI"}).find("td").at(4).find("a"), 'href');  
-//     edit_button= await locate('tr').withAttr({'data-name': "AEVI"}).find("td").at(4).find("a");  
-//     I.say('I can edit organisation overview');
-//     I.click(edit_button);
-//     // Check box for document access "Albert"
-//     I.checkOption({xpath: '/html/body/div/div/section/div/main/section/form/section[1]/div[2]/div/div[6]/input[2]'});
-//     I.say("I can click 'Update Organisation'")
-//     I.click({"name": "button"});
-//     I.see("Organisation was successfully updated.");
-//     I.uncheckOption("#organisation_documentation_group_organisations_attributes_5_documentation_group_id");
-//     I.checkOption("#organisation_documentation_group_organisations_attributes_5_documentation_group_id");
+Scenario("I can assign an Organisation Document access as an AEVI User", async (I) => {
+    I.say('I can access the Organisations screen');
+    I.click('Organisations');
+    I.seeInCurrentUrl('https://developer.aevi-test.com/admin/organisations');
+    href= await I.grabAttributeFrom(locate('tr').withAttr({'data-name': "AEVI"}).find("td").at(4).find("a"), 'href');  
+    edit_button= await locate('tr').withAttr({'data-name': "AEVI"}).find("td").at(4).find("a");  
+    I.say('I can edit organisation overview');
+    I.click(edit_button);
+    // Check box for document access "Albert"
+    I.checkOption({xpath: '/html/body/div/div/section/div/main/section/form/section[1]/div[2]/div/div[6]/input[2]'});
+    I.say("I can click 'Update Organisation'")
+    I.click({"name": "button"});
+    I.see("Organisation was successfully updated.");
+    I.uncheckOption("#organisation_documentation_group_organisations_attributes_5_documentation_group_id");
+    I.checkOption("#organisation_documentation_group_organisations_attributes_5_documentation_group_id");
 
-//     I.say("I sign out as an AEVI User");
-//     I.say("I log out to avoid sign in conflicts");
-//     I.click({xpath:  '/html/body/header/div/div/section/nav[2]/div/div/a'});
-//     I.click("Sign out");
+    I.say("I sign out as an AEVI User");
+    I.say("I log out to avoid sign in conflicts");
+    I.click({xpath:  '/html/body/header/div/div/section/nav[2]/div/div/a'});
+    I.click("Sign out");
 
-//     I.say('I log in as a developer user');
-//     I.amOnPage(process.env.developer_user_site);
-//     I.fillField('Email', process.env.regular_user);
-//     I.fillField('Password', secret(process.env.regular_user_password));
-//     I.click('Log in');
-//     I.say("I can login succesfully as an regular user");
-//     I.see('Signed in successfully.');
+    I.say('I log in as a developer user');
+    I.amOnPage(process.env.developer_user_site);
+    I.fillField('Email', process.env.regular_user);
+    I.fillField('Password', secret(process.env.regular_user_password));
+    I.click('Log in');
+    I.say("I can login succesfully as an regular user");
+    I.see('Signed in successfully.');
 
     
-//     I.say("I can access the added documentation");
-//     I.click("Documentation");
-//     I.see("Albert");
-//     pause()
-//     I.say("I can view the guide page")
-//     I.click({xpath: '/html/body/div[1]/div/section/div/main/section[1]/div/article[6]/nav/a[1]/figure/figcaption'});
-//     I.seeInCurrentUrl("https://developer.aevi-test.com/documentation/albert/guides/get-started");
-//     I.click("Documentation");
-//     I.say("I can view the downloads page")
-//     I.click({xpath: '/html/body/div/div/section/div/main/section[1]/div/article[6]/nav/a[2]'});
-//     I.seeInCurrentUrl("https://developer.aevi-test.com/documentation/albert/downloads/downloads");
-//     I.click("Documentation");
-//     I.say("I can view the FAQ page")
-//     I.click({xpath: '/html/body/div/div/section/div/main/section[1]/div/article[6]/nav/a[3]/figure/figcaption'});
-//     I.seeInCurrentUrl("https://developer.aevi-test.com/documentation/albert/faqs");
+    I.say("I can access the added documentation");
+    I.click("Documentation");
+    I.see("Albert");
+    pause()
+    I.say("I can view the guide page")
+    I.click({xpath: '/html/body/div[1]/div/section/div/main/section[1]/div/article[6]/nav/a[1]/figure/figcaption'});
+    I.seeInCurrentUrl("https://developer.aevi-test.com/documentation/albert/guides/get-started");
+    I.click("Documentation");
+    I.say("I can view the downloads page")
+    I.click({xpath: '/html/body/div/div/section/div/main/section[1]/div/article[6]/nav/a[2]'});
+    I.seeInCurrentUrl("https://developer.aevi-test.com/documentation/albert/downloads/downloads");
+    I.click("Documentation");
+    I.say("I can view the FAQ page")
+    I.click({xpath: '/html/body/div/div/section/div/main/section[1]/div/article[6]/nav/a[3]/figure/figcaption'});
+    I.seeInCurrentUrl("https://developer.aevi-test.com/documentation/albert/faqs");
     
 
-//     pause()
+    pause()
 
-// }).tag("@https://jira.aevi.com/browse/AEVICOM-1684");
+}).tag("@https://jira.aevi.com/browse/AEVICOM-1684");
 
 // Scenario("Template", (I) => {
 
